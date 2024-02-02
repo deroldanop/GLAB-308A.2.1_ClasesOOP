@@ -93,3 +93,41 @@ const adventurer = {
   // // Testing the scout method for companions
   robin.companion.scout();
   robin.companion.companion.scout();
+
+  //Part 4: Class Uniforms
+
+class NewCharacter {
+    static MAX_HEALTH = 100;
+  
+    constructor(name) {
+      this.name = name;
+      this.health = Character.MAX_HEALTH;
+      this.inventory = [];
+    }
+  
+    static ROLES = ["Fighter", "Healer", "Wizard"];
+  
+    roll(mod = 0) {
+      const result = Math.floor(Math.random() * 20) + 1 + mod;
+      console.log(`${this.name} rolled a ${result}.`);
+    }
+  }
+  
+  class LastAdventurer extends Character {
+    constructor(name, role) {
+      super(name);
+      if (!Character.ROLES.includes(role)) {
+        throw new Error("Invalid role");
+      }
+      this.role = role;
+      this.inventory.push("bedroll", "50 gold coins");
+      this.companion = new Companion("Leo", "Cat", [new Companion("Frank", "Flea", ["small hat", "sunglasses"])]);
+    }
+  
+    scout() {
+      console.log(`${this.name} is scouting ahead...`);
+      super.roll();
+    }
+  }
+
+ 
