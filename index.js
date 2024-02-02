@@ -130,4 +130,33 @@ class NewCharacter {
     }
   }
 
- 
+  //Part 5: Gather your Party
+
+  class AdventurerFactory {
+    constructor(role) {
+      this.role = role;
+      this.adventurers = [];
+    }
+  
+    generate(name) {
+      const newAdventurer = new Adventurer(name, this.role);
+      this.adventurers.push(newAdventurer);
+    }
+  
+    findByIndex(index) {
+      return this.adventurers[index];
+    }
+  
+    findByName(name) {
+      return this.adventurers.find((a) => a.name === name);
+    }
+  }
+  
+  const healers = new AdventurerFactory("Healer");
+  healers.generate("Healer1");
+  healers.generate("Healer2");
+  
+  const healer1 = healers.findByIndex(0);
+  const healer2 = healers.findByName("Healer2");
+
+  console.log(healer2);
