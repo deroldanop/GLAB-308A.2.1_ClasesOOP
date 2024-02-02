@@ -64,3 +64,32 @@ const adventurer = {
       robin.companion.scout();
       robin.companion.companion.scout();
     
+       //Part 3: Class Features
+
+ class Companion extends Character {
+    constructor(name, type, belongings) {
+      super(name);
+      this.type = type;
+      this.belongings = belongings || [];
+    }
+  }
+  
+  // // Update Adventurer class to use the Companion class
+  class newAdventurer extends Character {
+    constructor(name, role) {
+      super(name);
+      this.role = role;
+      this.inventory.push("bedroll", "50 gold coins");
+      this.companion = new Companion("Leo", "Cat", [new Companion("Frank", "Flea", ["small hat", "sunglasses"])]);
+    }
+  
+    scout() {
+      console.log(`${this.name} is scouting ahead...`);
+      super.roll();
+    }
+  }
+  
+  
+  // // Testing the scout method for companions
+  robin.companion.scout();
+  robin.companion.companion.scout();
